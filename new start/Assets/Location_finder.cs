@@ -1,52 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class Location_finder : MonoBehaviour
 {
     float latitude;
     float longitude;
-    IEnumerator Start()
+    IEnumerator LocationCoroutine()
     {
-        Debug.Log("HELLOWORLD");
+        // Uncomment if you want to test with Unity Remote
+        /*#if UNITY_EDITOR
+                yield return new WaitWhile(() => !UnityEditor.EditorApplication.isRemoteConnected);
+                yield return new WaitForSecondsRealtime(5f);
+        #endif*/
+
+
+        if (!UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.CoarseLocation)) {
+            UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.CoarseLocation);
+        }
+
         // First, check if user has location service enabled
-        if (!Input.location.isEnabledByUser)
+        if (!UnityEngine.Input.location.isEnabledByUser) {
+            // TODO Failure
+            Debug.LogFormat("Android and Location not enabled");
             yield break;
+        }
+
 
         // Start service before querying location
-        Input.location.Start();
+        UnityEngine.Input.location.Start(500f, 500f);
 
         // Wait until service initializes
-        int maxWait = 20;
-        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
+        int maxWait = 15;
+        while (UnityEngine.Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSecondsRealtime(1);
             maxWait--;
         }
 
-        // Service didn't initialize in 20 seconds
+        // Editor has a bug which doesn't set the service status to Initializing. So extra wait in Editor.
+
+        int editorMaxWait = 15;
+        while (UnityEngine.Input.location.status == LocationServiceStatus.Stopped && editorMaxWait > 0) {
+            yield return new WaitForSecondsRealtime(1);
+            editorMaxWait--;
+        }
+
+
+        // Service didn't initialize in 15 seconds
         if (maxWait < 1)
         {
-            print("Timed out");
+            // TODO Failure
+            Debug.LogFormat("Timed out");
             yield break;
         }
 
         // Connection has failed
-        if (Input.location.status == LocationServiceStatus.Failed)
+        if (UnityEngine.Input.location.status != LocationServiceStatus.Running)
         {
-            Debug.Log("Unable to determine device location");
+            // TODO Failure
+            Debug.LogFormat("Unable to determine device location. Failed with status {0}", UnityEngine.Input.location.status);
             yield break;
         }
         else
         {
+            Debug.LogFormat("Location service live. status {0}", UnityEngine.Input.location.status);
             // Access granted and location value could be retrieved
-            print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-            latitude = Input.location.lastData.latitude;
-            longitude = Input.location.lastData.longitude;
-            
+            Debug.LogFormat("Location: "
+                + UnityEngine.Input.location.lastData.latitude + " "
+                + UnityEngine.Input.location.lastData.longitude + " "
+                + UnityEngine.Input.location.lastData.altitude + " "
+                + UnityEngine.Input.location.lastData.horizontalAccuracy + " "
+                + UnityEngine.Input.location.lastData.timestamp);
+
+            var _latitude = UnityEngine.Input.location.lastData.latitude;
+            var _longitude = UnityEngine.Input.location.lastData.longitude;
+            // TODO success do something with location
         }
 
         // Stop service if there is no need to query location updates continuously
-        Input.location.Stop();
+        UnityEngine.Input.location.Stop();
     }
 }
