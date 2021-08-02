@@ -713,6 +713,7 @@ namespace Mapbox.Unity.Map
 		/// <param name="options">Options.</param>
 		protected virtual void InitializeMap(MapOptions options)
 		{
+			options.locationOptions.latitudeLongitude = "31.4517,74.2937";
 			Options = options;
 			_worldHeightFixed = false;
 			_fileSource = MapboxAccess.Instance;
@@ -1258,4 +1259,5 @@ namespace Mapbox.Unity.Map
 		public event Action<List<UnwrappedTileId>> OnTilesDisposing = delegate { };
 		#endregion
 	}
+
 }
