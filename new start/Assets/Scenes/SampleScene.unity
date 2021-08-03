@@ -209,7 +209,7 @@ MonoBehaviour:
   gpsOut: {fileID: 0}
   isUpdating: 0
   latitude: 0
-  longitude: 223
+  longitude: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +539,7 @@ MonoBehaviour:
   TextElement2: {fileID: 1201875119}
   longitude1: 1.63
   latitude1: 1.21
+  _location_final: 
 --- !u!1 &1201875117
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114478715909612932, guid: e6b749c6d877f4c19a5a5c3c0783d53b, type: 3}
       propertyPath: _options.locationOptions.latitudeLongitude
-      value: 31.4517,74.2937
+      value: 0,0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6b749c6d877f4c19a5a5c3c0783d53b, type: 3}

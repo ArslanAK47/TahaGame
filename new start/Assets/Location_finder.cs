@@ -13,6 +13,8 @@ public class Location_finder : MonoBehaviour
 
     public void Update()
     {
+        
+        Debug.Log(longitude+ longitude);
         if (!isUpdating)
         {
             StartCoroutine(GetLocation());
@@ -21,6 +23,8 @@ public class Location_finder : MonoBehaviour
     }
     IEnumerator GetLocation()
     {
+        latitude = 31.4517;
+        longitude = 74.2937;
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
             Permission.RequestUserPermission(Permission.FineLocation);
@@ -28,7 +32,7 @@ public class Location_finder : MonoBehaviour
         }
         // First, check if user has location service enabled
         if (!Input.location.isEnabledByUser)
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(3);
 
         // Start service before querying location
         Input.location.Start();
