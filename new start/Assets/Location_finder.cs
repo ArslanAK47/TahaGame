@@ -11,9 +11,9 @@ public class Location_finder : MonoBehaviour
     public double latitude;
     public double longitude;
 
-
     private void Update()
     {
+
         if (!isUpdating)
         {
             StartCoroutine(GetLocation());
