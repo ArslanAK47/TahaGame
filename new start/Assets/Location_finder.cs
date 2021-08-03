@@ -13,7 +13,6 @@ public class Location_finder : MonoBehaviour
 
     public void Update()
     {
-        
         Debug.Log(longitude+ longitude);
         if (!isUpdating)
         {
@@ -38,7 +37,7 @@ public class Location_finder : MonoBehaviour
         Input.location.Start();
 
         // Wait until service initializes
-        int maxWait = 10;
+        int maxWait = 3;
         while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
         {
             yield return new WaitForSeconds(1);

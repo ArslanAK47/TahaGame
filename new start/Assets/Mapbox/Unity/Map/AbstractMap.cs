@@ -46,7 +46,7 @@ namespace Mapbox.Unity.Map
 		protected Vector2d _centerMercator;
 		protected float _worldRelativeScale;
 		protected Vector3 _mapScaleFactor;
-		public Location_finder loca;
+		public test _player_location;
 		protected Vector3 _cachedPosition;
 		protected Quaternion _cachedRotation;
 		protected Vector3 _cachedScale = Vector3.one;
@@ -714,9 +714,9 @@ namespace Mapbox.Unity.Map
 		protected virtual void InitializeMap(MapOptions options)
 		{
 			
-			loca = GameObject.Find("Map").GetComponent<Location_finder>();
-			options.locationOptions.latitudeLongitude = loca.latitude.ToString()+ ","+ loca.longitude.ToString();
-			Debug.Log(loca.latitude.ToString() + "," + loca.longitude.ToString());
+			_player_location= GameObject.Find("Main Camera").GetComponent<test>();
+			options.locationOptions.latitudeLongitude = _player_location._location_final.ToString();
+			Debug.Log(_player_location._location_final);
 			Options = options;
 			_worldHeightFixed = false;
 			_fileSource = MapboxAccess.Instance;

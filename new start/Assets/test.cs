@@ -17,7 +17,7 @@ public class test : MonoBehaviour
         string _location_longitude = loci.ToString();
         string _location_latitude = loci2.ToString();
         _location_final = _location_latitude+","+ _location_longitude;
-
+        Debug.Log(_location_final);
     }
 
     // Start is called before the first frame update
