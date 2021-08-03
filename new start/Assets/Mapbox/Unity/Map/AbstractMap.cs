@@ -2,7 +2,6 @@ using Mapbox.Platform.Cache;
 using Mapbox.Unity.Map.Interfaces;
 using Mapbox.Unity.Map.Strategies;
 using Mapbox.Unity.Map.TileProviders;
-
 namespace Mapbox.Unity.Map
 {
 	using System;
@@ -498,8 +497,9 @@ namespace Mapbox.Unity.Map
 		protected virtual void Start()
 		{
 			MapOnStartRoutine();
-		}
 
+		}
+		
 		private void MapOnAwakeRoutine()
 		{
 			// Destroy any ghost game objects.
@@ -647,7 +647,7 @@ namespace Mapbox.Unity.Map
 				_imagery.Factory,
 				_vectorData.Factory
 			};
-
+			
 			InitializeMap(_options);
 		}
 
@@ -683,7 +683,7 @@ namespace Mapbox.Unity.Map
 			OnInitialized();
 		}
 
-		/// <summary>
+		
 		/// Apply Snap World to Zero setting by moving map in Y Axis such that
 		/// center of the given tile will be at y=0.
 		/// </summary>
@@ -707,16 +707,17 @@ namespace Mapbox.Unity.Map
 			}
 		}
 
-		/// <summary>
+		/// 
 		/// Initializes the map using the mapOptions.
 		/// </summary>
 		/// <param name="options">Options.</param>
+		/// 
 		protected virtual void InitializeMap(MapOptions options)
 		{
-			
-			_player_location= GameObject.Find("Main Camera").GetComponent<test>();
+			Debug.Log("asgas");
+			Debug.Log("asgasg");
+			_player_location = GameObject.Find("Main Camera").GetComponent<test>();
 			options.locationOptions.latitudeLongitude = _player_location._location_final.ToString();
-			Debug.Log(_player_location._location_final);
 			Options = options;
 			_worldHeightFixed = false;
 			_fileSource = MapboxAccess.Instance;
