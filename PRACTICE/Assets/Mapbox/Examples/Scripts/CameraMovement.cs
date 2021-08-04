@@ -22,9 +22,9 @@ namespace Mapbox.Examples
 		Vector3 _origin;
 		Vector3 _delta;
 		bool _shouldDrag;
-
 		void HandleTouch()
 		{
+			
 			float zoomFactor = 0.0f;
 			//pinch to zoom. 
 			switch (Input.touchCount)

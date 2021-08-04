@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_Size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114731470950229392, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224315790701160254, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1620,6 +1624,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 223082131773786238, guid: 00f5bf1ff996842fc82384f8f686fda6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224178813210018432, guid: 00f5bf1ff996842fc82384f8f686fda6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2271,7 +2279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641831148}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9527fd56bc6a0c549a1e550219f9b16e, type: 3}
   m_Name: 
@@ -2295,6 +2303,22 @@ PrefabInstance:
       propertyPath: MapVisualizer
       value: 
       objectReference: {fileID: 11400000, guid: 84a94dcf8a4f944f8bc89a06e9e105d5, type: 2}
+    - target: {fileID: 114465732514466838, guid: b95c449128f3b44bca8b83258c669aa5, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8246387
+      objectReference: {fileID: 0}
+    - target: {fileID: 114465732514466838, guid: b95c449128f3b44bca8b83258c669aa5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8246387
+      objectReference: {fileID: 0}
+    - target: {fileID: 114465732514466838, guid: b95c449128f3b44bca8b83258c669aa5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8246387
+      objectReference: {fileID: 0}
+    - target: {fileID: 114465732514466838, guid: b95c449128f3b44bca8b83258c669aa5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8246387
+      objectReference: {fileID: 0}
     - target: {fileID: 224557595208707984, guid: b95c449128f3b44bca8b83258c669aa5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
